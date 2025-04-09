@@ -4,11 +4,11 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import os
 
-# ========== CONFIG ==========
+# config
 st.set_page_config(page_title="🎵 Song Recommender", layout="centered")
 st.title("🎵 Song Recommender")
 
-# ========== API KEYS ==========
+# api keys
 genai.configure(api_key="AIzaSyArF992mt3ed9ZAH1cKxv5JzwpQ3pu-Sf0")
 
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
@@ -16,7 +16,6 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
     client_secret="06a2761ac7a34c758a77856a6ec42531"
 ))
 
-# ========== FUNCTIONS ==========
 
 def get_recommendations(prompt):
     """Ask Gemini to suggest songs based on a mood or theme."""
@@ -26,7 +25,6 @@ def get_recommendations(prompt):
     return response.text
 
 def search_spotify_songs(recommendation_text):
-    """Use Spotify API to get links and cover art for each Gemini recommendation."""
     tracks = []
     lines = recommendation_text.strip().split("\n")
 
@@ -68,7 +66,7 @@ def spotify_button(url):
     </a>
     """
 
-# ========== MAIN UI ==========
+#UI
 
 user_input = st.text_input("What are you in the mood for? (e.g., chill sunset drive, late night coding, heartbreak, etc.)")
 
